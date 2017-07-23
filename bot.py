@@ -43,14 +43,6 @@ async def ping():
     await bot.say("""Do you realy think that I will reply with a "Pong"?
 What an idot :P""")
 
-@bot.command()
-async def op(user : discord.Member):
-
-        if user.id in operators:
-            return await bot.say("%s is a operator"%(user))
-        if not user.id in operators:
-            await bot.say("%s is not a operator"%(user))
-
 ################################### Bot COMMANDS -- the bot commands
 @bot.command()
 async def joined(user : discord.Member):
@@ -99,6 +91,14 @@ async def tell(user : discord.Member,*text):
 async def add(left : int, right : int):
     """Adds two numbers together."""
     await bot.say(left + right)
+
+@bot.command()
+async def op(user : discord.Member):
+
+        if user.id in operators:
+            return await bot.say("%s is a operator"%(user))
+        if not user.id in operators:
+            await bot.say("%s is not a operator"%(user))
 
 ################################### Ctx COMMANDS -- The commands that only can be run by operators
 @bot.command(pass_context = True)
