@@ -5,13 +5,13 @@ from random import randrange, uniform
 import random
 
 ################################### Settings
-user = "ilovecreeper372"
-password = "NoHaxJustCreeperSSSsss"
-token = """MzI4NDMwMDI5NTYwMjE3NjAx.DDDy2w.1TznLyv5ULY1zMCF7MQat1wWp4A""" #Do not remove the quotes
+email = "Your user bot's email"
+pass = "Your user bot password"
+token = """Your bot's token""" #Do not remove the quotes
 cmdpf = "+" # the command prefix # (cmdpf) is a variable for the command prefix that you set.
-operators = ["228112572082028545", "337164531392577537"]
+operators = ["Your discord ID"]
 playedgame = 'Use %shelp for commands' % (cmdpf) #the played game message
-description = '0 Bot' # bot's description
+description = 'Bot description' # bot's description
 
 ################################### Bot Codes
 bot = commands.Bot(command_prefix=cmdpf, description=description)
@@ -20,7 +20,7 @@ async def on_ready():
     print(" Your Bot had successfully logged in as %s - %s"%(bot.user.name,bot.user.id))
     print(" Library version is", discord.__version__)
     print(" ------------------------------------------------")
-    print(" Hello Dung")
+    print(" Hello there")
     print(" How are you today?")
     await bot.change_presence(game=discord.Game(name=playedgame,url="""https://www.twitch.tv/twitch""",type=1))
 
@@ -202,9 +202,8 @@ async def katvsdoge():
     """Show the unlimate katten vs dogen meme"""
     await bot.say('https://media.giphy.com/media/xtGpIp4ixR6Gk/giphy.gif')
 
-######################################################################
-######################################################################
-######################################################################
+###################################
+###################################
 ################################### Bot run -- Make the bot run as a bot or a user bot
-bot.run(token)
-"""bot.run(user, password)"""
+bot.run(token) #remove this if your bot is a user bot
+bot.run(email, pass) #remove this if your bot is a bot
