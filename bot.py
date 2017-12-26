@@ -3,13 +3,21 @@ import string, os, discord, asyncio
 from discord.ext import commands
 from random import randrange, uniform
 import random
+import discord
+import logging
+
+logger = logging.getLogger('discord')
+logger.setLevel(logging.DEBUG)
+handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
+handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+logger.addHandler(handler)
 
 ################################### Settings
 email = "Your user bot's email"
-pass = "Your user bot password"
-token = """Your bot's token""" #Do not remove the quotes
+password = "Your user bot password"
+token = """Mzk1MDcxNTUzMTk0MTY0MjM0.DSORyg.MoicewgHZzwTe8iRtBx2yVU264E""" #Do not remove the quotes
 cmdpf = "+" # the command prefix # (cmdpf) is a variable for the command prefix that you set.
-operators = ["Your discord ID"]
+operators = ["228112572082028545"]
 playedgame = 'Use %shelp for commands' % (cmdpf) #the played game message
 description = 'Bot description' # bot's description
 
@@ -18,7 +26,7 @@ bot = commands.Bot(command_prefix=cmdpf, description=description)
 @bot.event
 async def on_ready():
     print(" Your Bot had successfully logged in as %s - %s"%(bot.user.name,bot.user.id))
-    print(" Library version is", discord.__version__)
+    print(" Discord version is", discord.__version__)
     print(" ------------------------------------------------")
     print(" Hello there")
     print(" How are you today?")
@@ -36,6 +44,14 @@ async def on_command_error(error, ctx):
     Try again ^_^""")
     await bot.send_message(ctx.message.channel,"""```py\n%s\n```\n%s, an error occurred."""%(error,ctx.message.author.mention))
 
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return False
+    if message.content.startswith('Hello'):
+        msg = 'Hello {0.author.mention}'.format(message)
+        await bot.send_message(message.channel, msg)
+
 ################################### Test COMMAND -- test if your bot is working or not
 @bot.command()
 async def ping():
@@ -52,6 +68,7 @@ async def joined(user : discord.Member):
 @bot.command()
 async def say(*text):
     """Make the Bot say something."""
+    await ctx.message.author.id
     await bot.say(" ".join(text))
 
 
@@ -206,4 +223,4 @@ async def katvsdoge():
 ###################################
 ################################### Bot run -- Make the bot run as a bot or a user bot
 bot.run(token) #remove this if your bot is a user bot
-bot.run(email, pass) #remove this if your bot is a bot
+#bot.run(email, password) #remove this if your bot is a bot
