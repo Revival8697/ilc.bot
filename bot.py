@@ -13,11 +13,11 @@ handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(me
 logger.addHandler(handler)
 
 ################################### Settings
-email = "Your user bot's email"
-password = "Your user bot password"
-token = """Mzk1MDcxNTUzMTk0MTY0MjM0.DSORyg.MoicewgHZzwTe8iRtBx2yVU264E""" #Do not remove the quotes
+email = "User bot's email"
+password = "User bot's password"
+token = """Bot's token""" #Do not remove the quotes
 cmdpf = "+" # the command prefix # (cmdpf) is a variable for the command prefix that you set.
-operators = ["228112572082028545"]
+operators = ["Operator's ID"]
 playedgame = 'Use %shelp for commands' % (cmdpf) #the played game message
 description = 'Bot description' # bot's description
 
